@@ -6,9 +6,10 @@ import "io"
 // when Close() is called. Go's stdlib unfortunately only provides io.NopCloser
 // for io.Reader, see: https://github.com/golang/go/issues/22823
 func WriteNopCloser(w io.Writer) io.WriteCloser {
-	return writeNopeCloser{w}
+	_ = "STUB: not implemented"
+	return *new(io.WriteCloser)
 }
 
 type writeNopeCloser struct{ io.Writer }
 
-func (nc writeNopeCloser) Close() error { return nil }
+func (nc writeNopeCloser) Close() error { _ = "STUB: not implemented"; return nil }

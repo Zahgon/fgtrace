@@ -1,14 +1,14 @@
 package internal
 
 import (
-	"fmt"
 	"io"
 	"os"
 )
 
 // NewFileWriter returns a io.WriteCloser.
 func NewFileWriter(name string) io.WriteCloser {
-	return &fileWriter{name: name, firstWrite: true}
+	_ = "STUB: not implemented"
+	return *new(io.WriteCloser)
 }
 
 type fileWriter struct {
@@ -19,31 +19,17 @@ type fileWriter struct {
 }
 
 // Close implements io.Writer.
-func (f *fileWriter) Write(p []byte) (int, error) {
-	if f.firstWrite {
-		f.firstWrite = false
-		f.file, f.err = os.Create(f.name)
-	}
-	if f.err != nil {
-		return 0, f.err
-	}
-	return f.file.Write(p)
-}
+func (f *fileWriter) Write(p []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 // Close implements io.Closer.
-func (f *fileWriter) Close() error {
-	if f.file != nil {
-		return f.file.Close()
-	}
-	return f.err
-}
+func (f *fileWriter) Close() error { _ = "STUB: not implemented"; return nil }
 
 // String implements fmt.Stringer.
 func (f *fileWriter) String() string {
-	return f.name
+	_ = "STUB: not implemented"
+
+	// GoString implements fmt.GoStringer.
+	return ""
 }
 
-// GoString implements fmt.GoStringer.
-func (f *fileWriter) GoString() string {
-	return fmt.Sprintf("*%#v", *f)
-}
+func (f *fileWriter) GoString() string { _ = "STUB: not implemented"; return "" }
